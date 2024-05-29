@@ -13,9 +13,12 @@
         android:theme="@style/Theme.Abarrotes"
         tools:targetApi="31">
         <activity
-            android:name="com.example.abarrotes.MainActivity"
-            android:label="@string/app_name"
-            android:exported="true">
+            android:name=".MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".login"
+            android:exported="true"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,12 +32,8 @@
             android:name=".VentasActivity"
             android:exported="false" />
         <activity
-            android:name=".login"
-            android:exported="false" />
-        <activity
             android:name=".registro"
             android:exported="false" />
-
     </application>
 
 </manifest>

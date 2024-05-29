@@ -9,7 +9,7 @@
     tools:context=".login">
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/correoL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="320dp"
@@ -24,37 +24,38 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/contrasenaL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:ems="10"
-        android:hint="contrasena"
+        android:hint="Contraseña"
         android:inputType="textPassword"
-        android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
+        app:layout_constraintBottom_toTopOf="@+id/btnSesion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/correoL" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnSesion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="38dp"
         android:text="Iniciar sesion"
         android:textColorLink="#00FFC0"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/correoL" />
 
-    <TextView
-        android:id="@+id/Registrate"
+    <Button
+        android:id="@+id/btnIrRegistro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="38dp"
-        android:text="Registrate aqui"
-        android:textColor="#FFF9F9"
-        app:layout_constraintStart_toStartOf="@+id/button2"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        android:layout_marginBottom="4dp"
+        android:text="Registrarme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSesion" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
