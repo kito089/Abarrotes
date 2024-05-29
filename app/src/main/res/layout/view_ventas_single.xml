@@ -31,6 +31,14 @@
                     android:text="Fecha"
                     android:textSize="16sp" />
 
+                <TextView
+                    android:id="@+id/IdVenta2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text=" IdVenta"
+                    android:textSize="16sp" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -147,6 +155,23 @@
                     android:layout_weight="1"
                     android:text="Total a Pagar"
                     android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#00FFE4"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/btnEditar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#00FFE4"
+                    android:src="@drawable/ic_edit"
+                    app:srcCompat="@drawable/ic_edit" />
             </LinearLayout>
 
         </LinearLayout>

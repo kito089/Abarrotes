@@ -31,7 +31,7 @@ public class MenuActivity extends AppCompatActivity {
         mRecycler.setLayoutManager(new LinearLayoutManager(this));
         Query query = mFirestore.collection("ventas");
         FirestoreRecyclerOptions<Ventas> firestoreRecyclerOptions = new FirestoreRecyclerOptions.Builder<Ventas>().setQuery(query, Ventas.class).build();
-        mAdapter = new VentasAdapter(firestoreRecyclerOptions);
+        mAdapter = new VentasAdapter(firestoreRecyclerOptions, this);
         mAdapter.notifyDataSetChanged();
         mRecycler.setAdapter(mAdapter);
         btnAgregar = findViewById(R.id.btnAgregar);

@@ -21,6 +21,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
+            android:id="@+id/IdVenta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="IdVenta"
+            android:inputType="text" />
+
+        <EditText
             android:id="@+id/Fecha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

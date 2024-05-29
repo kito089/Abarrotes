@@ -1,32 +1,44 @@
 package com.example.abarrotes.adapter;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.abarrotes.R;
+import com.example.abarrotes.VentasActivity;
 import com.example.abarrotes.model.Ventas;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class VentasAdapter extends FirestoreRecyclerAdapter<Ventas, VentasAdapter.ViewHolder>{
-
+    private FirebaseFirestore mFirestore = FirebaseFirestore.getInstance();
+    Activity activity;
     /**
      * Create a new RecyclerView adapter that listens to a Firestore Query.  See {@link
      * FirestoreRecyclerOptions} for configuration options.
      *
      * @param options
      */
-    public VentasAdapter(@NonNull FirestoreRecyclerOptions<Ventas> options) {
+    public VentasAdapter(@NonNull FirestoreRecyclerOptions<Ventas> options, Activity activity) {
+
         super(options);
+        this.activity = activity;
     }
 
     @Override
     protected void onBindViewHolder(@NonNull ViewHolder viewHolder, int position, @NonNull Ventas Ventas) {
+        DocumentSnapshot documentSnapshot = getSnapshots().getSnapshot(viewHolder.getAdapterPosition());
+        final String id = documentSnapshot.getId();
+        viewHolder.idVenta.setText(Ventas.getIdVenta());
         viewHolder.fecha.setText(Ventas.getFecha());
         viewHolder.idEmpleado.setText(Ventas.getIdEmpleado());
         viewHolder.idProducto.setText(Ventas.getIdProducto());
@@ -37,6 +49,14 @@ public class VentasAdapter extends FirestoreRecyclerAdapter<Ventas, VentasAdapte
         viewHolder.cantidad.setText(Ventas.getCantidad());
         viewHolder.subtotal.setText(Ventas.getSubtotal());
         viewHolder.total.setText(Ventas.getTotal());
+        viewHolder.btnEditar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(activity, VentasActivity.class);
+                i.putExtra("idVentas", id);
+                activity.startActivity(i);
+            }
+        });
     }
 
     @NonNull
@@ -47,9 +67,11 @@ public class VentasAdapter extends FirestoreRecyclerAdapter<Ventas, VentasAdapte
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView fecha, idEmpleado, idProducto, nombreProducto, descripcion, marca, precio, cantidad, subtotal, total;
+        TextView idVenta, fecha, idEmpleado, idProducto, nombreProducto, descripcion, marca, precio, cantidad, subtotal, total;
+        ImageView btnEditar;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            idVenta = itemView.findViewById(R.id.IdVenta2);;
             fecha = itemView.findViewById(R.id.Fecha2);;
             idEmpleado = itemView.findViewById(R.id.IdEmpleado2);;
             idProducto = itemView.findViewById(R.id.IdProducto2);;
@@ -60,6 +82,7 @@ public class VentasAdapter extends FirestoreRecyclerAdapter<Ventas, VentasAdapte
             cantidad = itemView.findViewById(R.id.Cantidad2);;
             subtotal = itemView.findViewById(R.id.Subtotal2);;
             total = itemView.findViewById(R.id.Total2);
+            btnEditar = itemView.findViewById(R.id.btnEditar);
         }
     }
 }

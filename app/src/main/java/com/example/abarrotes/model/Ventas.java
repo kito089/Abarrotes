@@ -1,11 +1,12 @@
 package com.example.abarrotes.model;
 
 public class Ventas {
-    String fecha, idEmpleado, idProducto, nombreProducto, descripcion, marca, precio, cantidad, subtotal, total;
+    String idVenta, fecha, idEmpleado, idProducto, nombreProducto, descripcion, marca, precio, cantidad, subtotal, total;
 
     public Ventas() {
     }
-    public Ventas(String fecha,String idEmpleado,String idProducto,String nombreProducto,String descripcion,String marca,String precio,String cantidad,String subtotal,String total) {
+    public Ventas(String idVenta, String fecha,String idEmpleado,String idProducto,String nombreProducto,String descripcion,String marca,String precio,String cantidad,String subtotal,String total) {
+        this.idVenta = idVenta;
         this.fecha = fecha;
         this.idEmpleado = idEmpleado;
         this.idProducto = idProducto;
@@ -20,6 +21,14 @@ public class Ventas {
 
     public String getFecha() {
         return fecha;
+    }
+
+    public void setIdVenta(String fecha) {
+        this.idVenta = idVenta;
+    }
+
+    public String getIdVenta() {
+        return idVenta;
     }
 
     public void setFecha(String fecha) {
