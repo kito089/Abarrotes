@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "837169800410",
+    "project_id": "abarrotes-f6b0b",
+    "storage_bucket": "abarrotes-f6b0b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:837169800410:android:5f13b1ba3dc283f96731e3",
+        "android_client_info": {
+          "package_name": "com.example.abarrotes"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwXk8Rq4aaHqCadgR1s4CTreyfp1-O9P4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
