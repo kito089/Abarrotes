@@ -77,10 +77,27 @@
             android:id="@+id/registro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="68dp"
+            android:background="#F40000"
+            android:backgroundTint="#FF0000"
             android:text="Registrarte"
+            android:textColor="#000000"
+            android:textColorLink="#FF0000"
             app:layout_constraintEnd_toEndOf="@+id/contrasena"
+            app:layout_constraintHorizontal_bias="0.493"
             app:layout_constraintStart_toStartOf="@+id/contrasena"
             app:layout_constraintTop_toBottomOf="@+id/contrasena" />
+
+        <EditText
+            android:id="@+id/comfirmarcontra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="11dp"
+            android:ems="10"
+            android:hint="confirmar contrasena"
+            android:inputType="textPassword"
+            app:layout_constraintBottom_toTopOf="@+id/registro"
+            app:layout_constraintEnd_toEndOf="@+id/contrasena" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
