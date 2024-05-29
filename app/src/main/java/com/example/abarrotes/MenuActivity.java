@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.SearchView;
 
 import com.example.abarrotes.adapter.VentasAdapter;
 import com.example.abarrotes.model.Ventas;
@@ -21,21 +22,24 @@ public class MenuActivity extends AppCompatActivity {
     RecyclerView mRecycler;
     VentasAdapter mAdapter;
     FirebaseFirestore mFirestore;
+    SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         mFirestore = FirebaseFirestore.getInstance();
+        searchView = findViewById(R.id.search);
         mRecycler = findViewById(R.id.recyclerViewSingle);
         mRecycler.setLayoutManager(new LinearLayoutManager(this));
         Query query = mFirestore.collection("ventas");
         FirestoreRecyclerOptions<Ventas> firestoreRecyclerOptions = new FirestoreRecyclerOptions.Builder<Ventas>().setQuery(query, Ventas.class).build();
-        mAdapter = new VentasAdapter(firestoreRecyclerOptions, this);
+        mAdapter = new VentasAdapter(firestoreRecyclerOptions, this, getSupportFragmentManager());
         mAdapter.notifyDataSetChanged();
         mRecycler.setAdapter(mAdapter);
         btnAgregar = findViewById(R.id.btnAgregar);
-
+    
+        search_View();
         btnAgregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,6 +48,34 @@ public class MenuActivity extends AppCompatActivity {
         });
 
     }
+
+    private void search_View() {
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                textSearch(s);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                textSearch(s);
+                return false;
+            }
+        });
+    }
+
+    private void textSearch(String s) {
+        Query query = mFirestore.collection("ventas");
+        FirestoreRecyclerOptions<Ventas> firestoreRecyclerOptions =
+                new FirestoreRecyclerOptions.Builder<Ventas>()
+                        .setQuery(query.orderBy("nombreProducto")
+                                .startAt(s).endAt(s+"~"), Ventas.class).build();
+        mAdapter = new VentasAdapter(firestoreRecyclerOptions, this, getSupportFragmentManager());
+        mAdapter.startListening();
+        mRecycler.setAdapter(mAdapter);
+    }
+
     @Override
     protected void onStart() {
         super.onStart();

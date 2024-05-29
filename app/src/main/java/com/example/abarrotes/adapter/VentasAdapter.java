@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.abarrotes.R;
@@ -27,8 +28,9 @@ public class VentasAdapter extends FirestoreRecyclerAdapter<Ventas, VentasAdapte
      * FirestoreRecyclerOptions} for configuration options.
      *
      * @param options
+     * @param supportFragmentManager
      */
-    public VentasAdapter(@NonNull FirestoreRecyclerOptions<Ventas> options, Activity activity) {
+    public VentasAdapter(@NonNull FirestoreRecyclerOptions<Ventas> options, Activity activity, FragmentManager supportFragmentManager) {
 
         super(options);
         this.activity = activity;
